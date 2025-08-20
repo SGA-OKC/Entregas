@@ -1,29 +1,27 @@
 package org.example.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Entrega {
     private int id;
     private int pedidoID;
     private int motoristaID;
-    private Date dataSaida;
-    private Date dataEntrega;
-    private boolean Status;
+    private LocalDate dataSaida;
+    private LocalDate dataEntrega;
+    private StatusEntrega statusEntrega;
 
-    public Entrega(int id, int pedidoID,int motoristaID, Date dataSaida, Date dataEntrega){
+    public Entrega(int id, int pedidoID,int motoristaID, LocalDate dataSaida, StatusEntrega statusEntrega){
         this.id = id;
         this.pedidoID = pedidoID;
         this.motoristaID = motoristaID;
         this.dataSaida = dataSaida;
-        this.dataEntrega = dataEntrega;
-        this.Status = true;
+        this.statusEntrega = statusEntrega;
     }
-    public Entrega(int pedidoID,int motoristaID, Date dataSaida, Date dataEntrega){
+    public Entrega(int pedidoID,int motoristaID, LocalDate dataSaida, StatusEntrega statusEntrega){
         this.pedidoID = pedidoID;
         this.motoristaID = motoristaID;
         this.dataSaida = dataSaida;
-        this.dataEntrega = dataEntrega;
-        this.Status = true;
+        this.statusEntrega = statusEntrega;
     }
 
     public int getId() {
@@ -50,27 +48,28 @@ public class Entrega {
         this.motoristaID = motoristaID;
     }
 
-    public Date getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(Date dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
 
-    public Date getDataEntrega() {
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
-    public boolean isStatus() {
-        return Status;
+    public StatusEntrega getStatusEntrega() {
+        return statusEntrega;
     }
 
-    public void setStatus(boolean status) {
-        Status = status;
+    public void setStatusEntrega(StatusEntrega statusEntrega) {
+        this.statusEntrega = statusEntrega;
     }
+
 }

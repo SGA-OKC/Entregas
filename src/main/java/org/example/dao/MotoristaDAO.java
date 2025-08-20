@@ -5,7 +5,10 @@ import org.example.model.Motorista;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MotoristaDAO {
 
@@ -24,6 +27,30 @@ public class MotoristaDAO {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public List<Motorista> listarMotorista(){
+        String query = "SELECT nome,cnh,veiculo,cidade_base FROM motorista";
+        List<Motorista> motoristas = new ArrayList<>();
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)){
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                String nome = rs.getNString("nome");
+                String cnh = rs.getNString("cnh");
+                String veiculo = rs.getNString("veiculo");
+                String cidadeBase = rs.getNString("cidade_base");
+
+                Motorista motorista = new Motorista(nome,cnh,veiculo,cidadeBase);
+                motoristas.add(motorista);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return motoristas;
     }
 
 

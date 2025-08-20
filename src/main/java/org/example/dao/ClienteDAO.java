@@ -25,6 +25,9 @@ public class ClienteDAO {
             stmt.setString(4, cliente.getCidade());
             stmt.setString(5, cliente.getEstado());
             stmt.executeUpdate();
+
+            System.out.println("\nCliente cadastrado com sucesso!\n");
+
         }catch(SQLException e){
             e.printStackTrace();
         }
